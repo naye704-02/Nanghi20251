@@ -212,6 +212,11 @@ function mostrarLogin() {
   document.getElementById('loginSection').style.display = 'flex';
 }
 
+function mostrarRegistro() {
+  ocultarTodo();
+  document.getElementById("registroSection").style.display = "flex";
+}
+
 function mostrarPresupuesto() {
   if (intervaloActualizacion) clearInterval(intervaloActualizacion);
   ocultarTodasSecciones();
