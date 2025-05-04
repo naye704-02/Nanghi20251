@@ -173,8 +173,19 @@ body {
 }
 
 .google-btn {
-  background: #a1a1a1;
+  background: #db4437;
   color: white;
+}
+
+.generate-btn {
+  background-color: #4e4376;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 /* Modal */
@@ -225,17 +236,6 @@ body {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-}
-
-.generate-btn {
-  background-color: #4e4376;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 1rem;
-  width: 100%;
 }
 
 /* Análisis */
@@ -300,7 +300,7 @@ th {
   z-index: 50;
 }
 
-/* Botón flotante (SOLO en análisis) */
+/* Botón flotante */
 .floating-btn {
   position: fixed;
   bottom: 20px;
@@ -367,13 +367,81 @@ th {
   color: white;
 }
 
-/* Ajustes para gráficos */
+/* Gráficos */
 canvas {
   max-width: 100%;
   height: auto !important;
 }
 
-/* Asegurar que los gráficos sean visibles en el PDF */
+/* Footer de análisis */
+.analisis-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.refresh-btn {
+  background: #2b5876;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s;
+}
+
+.refresh-btn:hover {
+  background: #4e4376;
+}
+
+.refresh-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Animaciones */
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Notificaciones */
+.notificacion {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  z-index: 1000;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+.notificacion.exito {
+  background: #4CAF50;
+}
+
+.notificacion.error {
+  background: #f44336;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* PDF */
 @media print {
   .chart-container {
     break-inside: avoid;
