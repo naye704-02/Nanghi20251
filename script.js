@@ -12,23 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupEventListeners() {
-  // Login
-document.getElementById('login-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const email = document.getElementById('loginEmail').value.trim(); // Cambiado a loginEmail
-  const password = document.getElementById('loginPassword').value; // Cambiado a loginPassword
-
-  const user = JSON.parse(localStorage.getItem(email));
-  if (user && user.password === password) {
-    alert('Inicio de sesión exitoso.');
-    localStorage.setItem('loggedInUser', email);
-    mostrarPresupuesto();
-  } else {
-    alert('Correo o contraseña incorrectos.');
-  }
-});
-  // Registro
-  document.getElementById('registro-form').addEventListener('submit', function (e) {
+// REGISTRO
+document.getElementById('registro-form').addEventListener('submit', function (e) {
   e.preventDefault();
   const email = document.getElementById('registroEmail').value.trim();
   const password = document.getElementById('registroPassword').value;
@@ -47,7 +32,24 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
   }
 });
 
-  // BOTÓN PARA MOSTRAR REGISTRO
+// LOGIN
+// Login (corregir selectores)
+document.getElementById('login-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim(); // Cambiado a loginEmail
+  const password = document.getElementById('loginPassword').value; // Cambiado a loginPassword
+
+  const user = JSON.parse(localStorage.getItem(email));
+  if (user && user.password === password) {
+    alert('Inicio de sesión exitoso.');
+    localStorage.setItem('loggedInUser', email);
+    mostrarPresupuesto();
+  } else {
+    alert('Correo o contraseña incorrectos.');
+  }
+});
+
+// BOTÓN PARA MOSTRAR REGISTRO
 document.getElementById("register-btn").addEventListener("click", function () {
   mostrarRegistro();
 });
