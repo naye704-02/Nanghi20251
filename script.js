@@ -1,4 +1,20 @@
 // Variables globales
+// Funciones de navegación GLOBALES
+function mostrarRegistro() {
+  ocultarTodasSecciones();
+  document.getElementById('registroSection').style.display = 'flex';
+}
+
+function mostrarLogin() {
+  ocultarTodasSecciones();
+  document.getElementById('loginSection').style.display = 'flex';
+}
+
+function ocultarTodasSecciones() {
+  document.querySelectorAll('section').forEach(section => {
+    section.style.display = 'none';
+  });
+}
 let currentFileInput = null;
 let excelData = [];
 let tendenciaChart = null;
@@ -64,38 +80,6 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
 document.getElementById("register-btn").addEventListener("click", function () {
   mostrarRegistro();
 });
-
-  // NAVEGACIÓN ENTRE SECCIONES
-function mostrarLogin() {
-  ocultarTodo();
-  document.getElementById("loginSection").style.display = "flex";
-}
-
-function mostrarRegistro() {
-  ocultarTodo();
-  document.getElementById("registroSection").style.display = "flex";
-}
-
-function mostrarPresupuesto() {
-  ocultarTodo();
-  document.getElementById("presupuestoSection").style.display = "block";
-}
-
-function mostrarAnalisis() {
-  ocultarTodo();
-  document.getElementById("analisisSection").style.display = "block";
-  analizarDesviaciones();
-}
-
-function mostrarReportes() {
-  ocultarTodo();
-  document.getElementById("reportesSection").style.display = "block";
-  cargarGraficos();
-}
-
-function ocultarTodo() {
-  document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
-}
   
   // Navegación
   document.getElementById('analisisLink').addEventListener('click', function(e) {
