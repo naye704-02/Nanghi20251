@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
   <!-- Librería para exportar PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-
 <body>
   <!-- Interfaz Login -->
   <section id="loginSection" class="login-container">
@@ -47,7 +45,7 @@
         </div>
       </div>
     </header>
-
+    
     <main class="content">
       <h1>Cargar presupuesto</h1>
       <div class="button-group">
@@ -61,17 +59,17 @@
       <button class="generate-btn" id="generarAnalisisBtn">Generar Análisis</button>
     </main>
   </section>
-  <input type="file" id="excelInput" accept=".xlsx" hidden> <!-- Debe tener este ID -->
+<input type="file" id="excelInput" accept=".xlsx" hidden> <!-- Debe tener este ID -->
 
-  <!-- Modal para Excel -->
-  <div id="excelModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModal">&times;</span>
-      <h3>Vista previa del archivo</h3>
-      <div id="excelPreview" class="excel-preview"></div>
-      <button class="generate-btn" id="generateAnalysis">Generar análisis</button>
+    <!-- Modal para Excel -->
+    <div id="excelModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Vista previa del archivo</h3>
+        <div id="excelPreview" class="excel-preview"></div>
+        <button class="generate-btn" id="generateAnalysis">Generar análisis</button>
+      </div>
     </div>
-  </div>
   </section>
 
   <!-- Interfaz Análisis -->
@@ -91,7 +89,7 @@
         </div>
       </div>
     </header>
-
+    
     <main class="analysis-content">
       <h1>Análisis de desviaciones de costos</h1>
       <div class="table-container">
@@ -116,7 +114,7 @@
 
     <!-- Botón Volver -->
     <button id="backBtn" class="back-btn">← Volver</button>
-
+    
     <!-- Botón Generar Reporte -->
     <button id="generateReportBtn" class="floating-btn">Generar Reporte</button>
   </section>
@@ -138,22 +136,22 @@
         </div>
       </div>
     </header>
-
+    
     <main class="reportes-content">
       <h1>Generación de Reportes</h1>
-
+      
       <!-- Gráfico de Tendencia -->
       <div class="chart-container">
         <h2>Tendencia de Costos (Últimos 6 meses)</h2>
         <canvas id="tendenciaChart"></canvas>
       </div>
-
+      
       <!-- Gráfico de Comparación -->
       <div class="chart-container">
         <h2>Comparación por Partida</h2>
         <canvas id="comparacionChart"></canvas>
       </div>
-
+      
       <!-- Botones de acción -->
       <div class="reportes-actions">
         <button id="volverBtn" class="action-btn">← Volver</button>
@@ -161,29 +159,26 @@
       </div>
     </main>
   </section>
-  <!DOCTYPE html>
-  <html lang="es">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ... (otros metadatos) ... -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- ... (todo tu contenido actual) ... -->
 
-  <head>
-    <!-- ... (otros metadatos) ... -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  </head>
-
-  <body>
-    <!-- ... (todo tu contenido actual) ... -->
-
-    <!-- Librerías externas (al final del body) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-
-    <!-- Inicialización de jsPDF -->
-    <script>
-      // Solución clave: inicializar jsPDF antes de tu script
-      window.jsPDF = window.jspdf.jsPDF;
-    </script>
-
-    <script src="script.js"></script>
-  </body>
-
-  </html>
+  <!-- Librerías externas (al final del body) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+  
+  <!-- Inicialización de jsPDF -->
+  <script>
+    // Solución clave: inicializar jsPDF antes de tu script
+    window.jsPDF = window.jspdf.jsPDF;
+  </script>
+  
+  <script src="script.js"></script>
+</body>
+</html>
