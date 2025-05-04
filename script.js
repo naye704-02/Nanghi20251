@@ -64,6 +64,38 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
 document.getElementById("register-btn").addEventListener("click", function () {
   mostrarRegistro();
 });
+
+  // NAVEGACIÓN ENTRE SECCIONES
+function mostrarLogin() {
+  ocultarTodo();
+  document.getElementById("loginSection").style.display = "flex";
+}
+
+function mostrarRegistro() {
+  ocultarTodo();
+  document.getElementById("registroSection").style.display = "flex";
+}
+
+function mostrarPresupuesto() {
+  ocultarTodo();
+  document.getElementById("presupuestoSection").style.display = "block";
+}
+
+function mostrarAnalisis() {
+  ocultarTodo();
+  document.getElementById("analisisSection").style.display = "block";
+  analizarDesviaciones();
+}
+
+function mostrarReportes() {
+  ocultarTodo();
+  document.getElementById("reportesSection").style.display = "block";
+  cargarGraficos();
+}
+
+function ocultarTodo() {
+  document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+}
   
   // Navegación
   document.getElementById('analisisLink').addEventListener('click', function(e) {
@@ -496,5 +528,4 @@ function mostrarNotificacion(mensaje, esError = false) {
   setTimeout(() => document.body.removeChild(notificacion), 3000);
 }
 
-// Iniciar
-mostrarLogin();
+// Iniciar mostrarLogin();
