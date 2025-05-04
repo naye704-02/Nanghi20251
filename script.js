@@ -13,22 +13,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function setupEventListeners() {
   // Login
-  document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('login-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim(); // Cambiado a loginEmail
+  const password = document.getElementById('loginPassword').value; // Cambiado a loginPassword
+
+  const user = JSON.parse(localStorage.getItem(email));
+  if (user && user.password === password) {
+    alert('Inicio de sesión exitoso.');
+    localStorage.setItem('loggedInUser', email);
     mostrarPresupuesto();
-  });
-
+  } else {
+    alert('Correo o contraseña incorrectos.');
+  }
+});
   // Registro
-  document.getElementById('registerBtn').addEventListener('click', mostrarRegistro);
+  document.getElementById('registro-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const email = document.getElementById('registroEmail').value.trim();
+  const password = document.getElementById('registroPassword').value;
 
-  // Menús
-  document.getElementById('userBtn').addEventListener('click', () => toggleDropdown('dropdownMenu'));
-  document.getElementById('menuBtn').addEventListener('click', () => toggleDropdown('dropdownMenu'));
-  document.getElementById('userBtnAnalisis').addEventListener('click', () => toggleDropdown('dropdownMenuAnalisis'));
-  document.getElementById('menuBtnAnalisis').addEventListener('click', () => toggleDropdown('dropdownMenuAnalisis'));
-  document.getElementById('userBtnReportes').addEventListener('click', () => toggleDropdown('dropdownMenuReportes'));
-  document.getElementById('menuBtnReportes').addEventListener('click', () => toggleDropdown('dropdownMenuReportes'));
+  if (email && password) {
+    if (localStorage.getItem(email)) {
+      alert('Este correo ya está registrado.');
+    } else {
+      const user = { email, password };
+      localStorage.setItem(email, JSON.stringify(user));
+      alert('Cuenta creada exitosamente. Ahora inicia sesión.');
+      mostrarLogin();
+    }
+  } else {
+    alert('Por favor, completa todos los campos.');
+  }
+});
 
+  // BOTÓN PARA MOSTRAR REGISTRO
+document.getElementById("register-btn").addEventListener("click", function () {
+  mostrarRegistro();
+});
+  
   // Navegación
   document.getElementById('analisisLink').addEventListener('click', function(e) {
     e.preventDefault();
