@@ -25,6 +25,11 @@ section {
   background: linear-gradient(to bottom right, #2b5876, #4e4376);
 }
 
+/* Añadir esto para mantener consistencia */
+#registroSection {
+  display: none; /* Se maneja desde JavaScript */
+}
+
 .login-box {
   background-color: white;
   padding: 2rem;
