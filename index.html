@@ -29,6 +29,25 @@
     </div>
   </section>
 
+  <!-- INTERFAZ REGISTRO -->
+  <section class="login-container" id="registroSection" style="display: none;">
+    <div class="login-box">
+      <div class="login-header">
+        <img src="assets/logo.jpeg" alt="Logo NANGHI" class="logo" />
+        <h2>Crear cuenta</h2>
+      </div>
+      <form id="registro-form">
+        <input type="email" id="registroEmail" placeholder="Correo electrónico" required />
+        <input type="password" id="registroPassword" placeholder="Contraseña" required />
+        <button type="submit">Registrar</button>
+      </form>
+      <div class="new-user">
+        <p>¿Ya tienes cuenta?</p>
+        <button onclick="mostrarLogin()">Iniciar sesión</button>
+      </div>
+    </div>
+  </section>
+
   <!-- Interfaz Carga Presupuesto -->
   <section id="presupuestoSection" class="container">
     <header class="top-bar">
