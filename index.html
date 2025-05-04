@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>App NANGHI</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Librería para exportar PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <!-- Interfaz Login -->
   <section id="loginSection" class="login-container">
     <div class="login-box">
       <div class="login-header">
-        <img src="https://i.imgur.com/BonPKZu.jpeg" alt="Logo" class="logo">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo">
         <h2>Iniciar sesión</h2>
       </div>
       <form id="loginForm">
@@ -29,10 +30,10 @@
   </section>
 
   <!-- Interfaz Carga Presupuesto -->
-  <section class="container" id="presupuestoSection" style="display: none;">
+  <section id="presupuestoSection" class="container">
     <header class="top-bar">
       <div class="logo-container">
-        <img src="https://i.imgur.com/BonPKZu.jpeg" alt="Logo" class="logo">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo">
         <span>Cargar presupuesto</span>
       </div>
       <div class="user-menu">
@@ -56,10 +57,8 @@
         </label>
         <button class="google-btn" id="googleSheetsBtn">Conectar Google Sheets</button>
       </div>
-      <button class="generate-btn" id="generarAnalisisBtn">Generar Análisis</button>
+      <button class="generate-btn" id="generateAnalysisFromSheets">Generar análisis</button>
     </main>
-  </section>
-<input type="file" id="excelInput" accept=".xlsx" hidden> <!-- Debe tener este ID -->
 
     <!-- Modal para Excel -->
     <div id="excelModal" class="modal">
@@ -73,10 +72,10 @@
   </section>
 
   <!-- Interfaz Análisis -->
-  <section class="container" id="analisisSection" style="display: none;">
+  <section id="analisisSection" class="container analysis-section">
     <header class="top-bar">
       <div class="logo-container">
-        <img src="https://i.imgur.com/BonPKZu.jpeg" alt="Logo" class="logo small-logo">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo small-logo">
         <span>Análisis de desviaciones</span>
       </div>
       <div class="user-menu">
@@ -102,20 +101,18 @@
               <th>Desviación</th>
             </tr>
           </thead>
-          <tbody id="analisisTableBody">
-            <!-- Datos dinámicos -->
-          </tbody>
+          <tbody id="analisisTableBody"></tbody>
         </table>
       </div>
-      <div id="alertBox" class="alert-box">
-        <!-- Alertas dinámicas -->
+      <div id="alertBox" class="alert-box"></div>
+      
+      <div class="analisis-footer">
+        <button id="refreshDataBtn" class="refresh-btn">
+          <i class="fas fa-sync-alt"></i> Actualizar Datos
+        </button>
       </div>
     </main>
-
-    <!-- Botón Volver -->
     <button id="backBtn" class="back-btn">← Volver</button>
-    
-    <!-- Botón Generar Reporte -->
     <button id="generateReportBtn" class="floating-btn">Generar Reporte</button>
   </section>
 
@@ -123,7 +120,7 @@
   <section id="reportesSection" class="container reportes-section">
     <header class="top-bar">
       <div class="logo-container">
-        <img src="https://i.imgur.com/BonPKZu.jpeg" alt="Logo" class="logo small-logo">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo small-logo">
         <span>Generación de Reportes</span>
       </div>
       <div class="user-menu">
@@ -139,46 +136,26 @@
     
     <main class="reportes-content">
       <h1>Generación de Reportes</h1>
-      
-      <!-- Gráfico de Tendencia -->
       <div class="chart-container">
         <h2>Tendencia de Costos (Últimos 6 meses)</h2>
         <canvas id="tendenciaChart"></canvas>
       </div>
-      
-      <!-- Gráfico de Comparación -->
       <div class="chart-container">
         <h2>Comparación por Partida</h2>
         <canvas id="comparacionChart"></canvas>
       </div>
-      
-      <!-- Botones de acción -->
       <div class="reportes-actions">
         <button id="volverBtn" class="action-btn">← Volver</button>
         <button id="exportPdfBtn" class="action-btn">Exportar como PDF</button>
       </div>
     </main>
   </section>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <!-- ... (otros metadatos) ... -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-</head>
-<body>
-  <!-- ... (todo tu contenido actual) ... -->
 
-  <!-- Librerías externas (al final del body) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-  
-  <!-- Inicialización de jsPDF -->
   <script>
-    // Solución clave: inicializar jsPDF antes de tu script
     window.jsPDF = window.jspdf.jsPDF;
   </script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
