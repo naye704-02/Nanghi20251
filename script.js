@@ -4,6 +4,17 @@ let excelData = [];
 let tendenciaChart = null;
 let comparacionChart = null;
 let intervaloActualizacion;
+let datosAnalisis = [];
+const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRe_SO-lnkG4p6whgSAS7mk8mGMGoruoi-AP_V1-wvFIcz8vhS2IY5EZT0LNldvG0-Vie62-4mvoRaB/pub?output=csv';
+function mostrarNotificacion(mensaje, esError = false) {
+  const notificacion = document.createElement('div');
+  notificacion.className = `notificacion ${esError ? 'error' : 'exito'}`;
+  notificacion.textContent = mensaje;
+  notificacion.style.cssText = 'position: fixed; top: 20px; right: 20px; padding: 15px; border-radius: 5px; z-index: 1000;';
+  document.body.appendChild(notificacion);
+  
+  setTimeout(() => document.body.removeChild(notificacion), 3000);
+}
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
